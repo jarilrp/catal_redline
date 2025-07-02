@@ -1,0 +1,198 @@
+/* Definindo variáveis de cor */
+:root {
+    --primary-color: #ff4b4b; /* Vermelho vibrante */
+    --background-gradient: linear-gradient(135deg, #ff4b4b, #333);
+    --dark-bg: #2b1a18; /* Marrom escuro */
+    --title-color: #4d2c26; /* Novo marrom escuro para os títulos */
+    --light-text: #f5eadd; /* Branco-osso */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background-gradient);
+    color: var(--light-text);
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do Hero com Logomarca */
+.hero {
+    background: var(--background-gradient);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 90.18vw;  /* 100% da largura da tela */
+    height: 30.15vh; /* 40% da altura da tela */
+    
+    animation: fadeIn 2s ease-in-out;
+    transition: transform 0.3s;
+}
+.hero img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* === NOVOS ESTILOS PARA TÍTULOS DE SEÇÃO (H2) === */
+h2 {
+    font-family: 'Russo One', sans-serif; /* Nova fonte carismática */
+    font-size: 2.5em; /* Aumentado para mais impacto */
+    color: var(--title-color); /* Nova cor marrom escura */
+    text-align: center;
+    margin: 60px 0 30px;
+    padding-bottom: 10px;
+    border-bottom: 4px solid var(--primary-color); /* Linha inferior para destaque */
+    display: inline-block; /* Para a borda se ajustar ao texto */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Sombra sutil */
+}
+
+/* Container principal */
+.catalog-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Centraliza o H2 */
+    /* === ESTILOS PARA ANIMAÇÃO DE ENTRADA === */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Classe adicionada via JS para ativar a animação */
+.catalog-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.swiper {
+    width: 100%;
+    padding: 10px 0 40px 0;
+}
+
+.swiper-slide {
+    text-align: center;
+    background: var(--dark-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 712 / 233;
+    transition: box-shadow 0.3s ease; /* Transição para o hover */
+}
+
+.swiper-slide:hover {
+    box-shadow: 0 8px 16px var(--shadow-color); /* Sombra mais pronunciada no hover */
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    user-select: none;
+    pointer-events: none;
+}
+
+.swiper-slide:hover img {
+    transform: scale(1.05);
+}
+
+/* Camada de proteção nas imagens */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+
+/* Número do modelo */
+.model-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: 2em;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 0px 0px 4px rgba(255, 255, 255, 1);
+}
+
+/* Botões e paginação do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+}
+
+/* Aviso de direitos autorais */
+.copyright-notice {
+    text-align: center;
+    padding: 20px;
+    background: #f0f0f0;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        height: 150px;
+    }
+    .hero img {
+        max-width: 150px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .swiper-slide {
+        aspect-ratio: 1 / 1;
+    }
+}
